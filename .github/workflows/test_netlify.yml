@@ -1,15 +1,16 @@
 on:
   pull_request:
-    type: [opened, reopened, synchronize]
+    types: [opened, reopened, synchronize]
 
 jobs:
   build:
     runs-on: ubuntu-22.04
-    # Because the testing job is different, we need to out the Netlify URL so we can access it in another job
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idoutputs
+    permissions:
+      issues: write
+      pull-requests: write
     outputs:
       deploy_url: ${{steps.build_site.outputs.NETLIFY_URL}}
-    steps:
+    steps: 
       - name: Checkout Repo Code
         uses: actions/checkout@v3
 
@@ -17,18 +18,18 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-
+        
       - name: Install Node Modules
         run: npm install
 
       - name: Deploy to Netlify
-        id: build_site
+        run: ./.github/actions/netlify_deploy.sh
         env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        run: ./_actions/netlify_deploy.sh
+          NETLIFY_AUT_TOKEN: ${{secrets.NETLIFY_AUT_TOKEN}}
+          NETLIFY_SITE_ID: ${{secrets.NETLIFY_SITE_ID}}
 
-      - uses: actions/github-script@v6
+      - name: Comment on PR
+        uses: actions/github-script@v6
         with:
           script: |
             github.rest.issues.createComment({
@@ -38,8 +39,7 @@ jobs:
               body: 'The build works! You can view the deploy preview at ${{steps.build_site.outputs.NETLIFY_URL}}'
             })
 
-  # Creating a new job for the tests to run in
-   test:
+  test:
     needs: build
     runs-on: ubuntu-22.04
     steps:
