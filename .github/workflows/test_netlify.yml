@@ -25,7 +25,7 @@ jobs:
       - name: Deploy to Netlify
         run: ./.github/actions/netlify_deploy.sh
         env:
-          NETLIFY_AUTH_TOKEN: ${{secrets.NETLIFY_AUT_TOKEN}}
+          NETLIFY_AUTH_TOKEN: ${{secrets.NETLIFY_AUTH_TOKEN}}
           NETLIFY_SITE_ID: ${{secrets.NETLIFY_SITE_ID}}
 
       - name: Comment on PR
