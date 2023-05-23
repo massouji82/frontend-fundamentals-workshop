@@ -1,0 +1,27 @@
+ test:
+    needs: build
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repo Code
+        uses: actions/checkout@v3
+
+      - name: Install Packages
+        run: npm run ci
+      
+      # - name: Percy Test
+      #   env:
+      #     PERCY_TOKEN: ${{secrets.PERCY_TOKEN}}
+      #   run: npx @percy/cli snapshot tests/vr/snapshots.yml --base-url ${{needs.build.outputs.deploy_url}}
+
+      - name: Run Playwright Tests
+        run: npm run test:ui:ci
+        env:
+          SITE_URL: ${{needs.build.outputs.deploy_url}}
+        
+      - name: Upload Playwright Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: tests/ui/results/reports/
+          retention-days: 30
