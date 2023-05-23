@@ -1,0 +1,219 @@
+<header>
+	<nav>
+		<a href="#forms">Forms</a>
+		<a href="#media">Media</a>
+		<a href="#videos">Videos</a>
+		<a href="#other">Other</a>
+	</nav>
+</header>
+<main id="main">
+	<article>
+		<h1>Semantic HTML</h1>
+		<p>Semantic HTML is really, really, really important.</p>
+		<section id="forms">
+			<h2>Forms and labels</h2>
+			<form>
+				<label for="full_name">Full name</label>
+				<input 
+					   type="text" 
+					   name="full_name" 
+					   placeholder="Full Name" 
+					   id="full_name"
+				/>
+				
+				<label for="email_address">Email Address</label>
+				<input 
+					   type="email" 
+					   name="email_address" 
+					   placeholder="Email Address" 
+					   id="email_address"
+				/>
+				
+				<label for="phone_number">Phone Number</label>
+				<input 
+					   type="tel" 
+					   name="phone_number" 
+					   placeholder="Phone Number" 
+					   id="email_address"
+					   pattern="[0-9]{8}"
+				/>
+				
+				<label for="transport">
+					What was your method of transport?
+				</label>
+				<input 
+					type="text" 
+					list="travel_options" 
+					id="transport" 
+					name="transport" 
+				/>
+				<datalist id="travel_options">    
+					<option value="Train" />    
+					<option value="Tram" />    
+					<option value="Subway" />    
+					<option value="Plane" />    
+					<option value="Boat" />    
+					<option value="Car" />
+				</datalist>
+				
+				<label for="review">
+					How important is Semantic HTML in web development?
+				</label>
+				<input 
+					type="range" 
+					name="semantic_html"
+					id="review" 
+					max="10" 
+					step="1" 
+					list="quokka_coolness_list"
+				/>
+				<datalist id="quokka_coolness_list">
+					<option value="0">Not at all important</option>
+					<option value="5">Moderately mportant</option>
+					<option value="10">Most important part</option>
+				</datalist>
+			</form>
+		</section>
+		<section id="media">
+			<h2>Media Items</h2>
+			<figure>
+				<img 
+					 src="https://assets.codepen.io/707165/image_900.jpg" 
+					 alt="A beautiful sunset at the beach. Waves are washing in and a seagull is flying past to the left." 
+					 />
+				<figcaption>Rottnest Island, WA</figcaption>
+			</figure>
+
+			<picture>
+				<source
+						srcset="https://assets.codepen.io/707165/image_300.webp"
+						media="(max-width: 300px)"    
+						type="image/webp"    
+						/>  
+				<source
+						srcset="https://assets.codepen.io/707165/image_300.avif"
+						media="(max-width: 300px)"    
+						type="image/avif"    
+						/>   
+				<source        
+						srcset="https://assets.codepen.io/707165/image_600.webp"   
+						media="(max-width: 600px)"
+						type="image/webp"    
+						/>    
+				<source        
+						srcset="https://assets.codepen.io/707165/image_600.avif"   
+						media="(max-width: 600px)"
+						type="image/avif"  
+						/>     
+				<source        
+						srcset="https://assets.codepen.io/707165/image_900.webp"   
+						media="(max-width: 900px)"
+						type="image/webp"  
+						/> 
+				<source        
+						srcset="https://assets.codepen.io/707165/image_900.avif"   
+						media="(max-width: 900px)"
+						type="image/avif"  
+						/> 
+				<img src="https://assets.codepen.io/707165/image_1200.jpg" 							       						alt="Nice view of the scenery" 
+					 />
+			</picture>
+			
+			<img 
+				src="https://assets.codepen.io/707165/Layout+Map.png" 
+				width="540" 
+				height="540"
+				usemap="#image_map"
+			/>
+			<map name="image_map">
+				<area 
+					alt="Header Section" 
+					title="header" 
+					href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header" 
+					target="_blank" 
+					coords="0,0,540,100" 
+					shape="rect" 
+				/>
+				<area 
+					alt="Content Section"
+					title="main" 
+					href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main" 
+					target="_blank" 
+					coords="79,100,540,488.5" 
+					shape="rect" 
+				/>
+				<area 
+					alt="Sidebar Section" 
+					title="aside" 
+					href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside" 
+					target="_blank" 
+					coords="0,100,79,488.5" 
+					shape="rect" 
+				/>
+				<area 
+					alt="Footer Section" 
+					title="footer" 
+					href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer" 
+					target="_blank" 
+					coords="0,488.5,540,540" 
+					shape="rect" 
+				/>
+			</map>
+			<h3 id="videos">Videos</h3>
+			<figure>
+				<video
+					crossorigin
+					controls    
+					muted    
+					loop
+				>    
+					<source        
+						src="https://assets.codepen.io/707165/video.mp4"        
+						type="video/mp4"    
+					/>    
+					<track        
+						default        
+						kind="captions"        
+						srclang="en-AU"        
+						src="https://assets.codepen.io/707165/subtitles.vtt"    
+					/>
+					<p>Sorry, your browser doesn't support this video.</p>
+				</video>
+				<figcaption>Dogs playing</figcaption>
+			</figure>
+		</section>
+		<section id="other">
+			<h2>Other Fun Things</h2>
+			<dl>
+			  <dt>Web</dt>
+			  <dd>The part of the Internet that contains websites and web pages</dd>
+			  <dt>HTML</dt>
+			  <dd>A markup language for creating web pages</dd>
+			  <dt>CSS</dt>
+			  <dd>A technology to make HTML look better</dd>
+			</dl>
+			
+			<details>
+				<summary>Are Quokkas real?</summary>
+				<p>Is Australia real? Are we even real? What is real? Are we all just a figment of someone's imagination? Or part of the matrix?</p>
+				<p>Yes, Quokkas are real. They seem too good to be true, and a bit too weird (like most animals in Australia, I'm still convinced that platypus' are a myth), but they do genuinely exist.</p>
+			</details>
+
+			<details>    
+				<summary>Can I have one?</summary>    
+				<p>Quokkas are only native to one island in Australia, and don't do well outside of their natural habitat. They're not great as pets, it would be similar to keeping a squirrel as a pet.</p>
+			</details>
+			
+			<address>    
+				1 Henderson Ave<br/>    
+				Rottnest Island, WA<br/>    
+				Australia 6161
+			</address>
+
+			<address>    
+				<a href="tel:+61893729730">(08) 9372 9730</a>
+			</address>
+		</section>
+	</article>
+</main>
+<footer id="footer">&copy; 2023</footer>
